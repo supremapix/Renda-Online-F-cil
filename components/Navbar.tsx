@@ -23,7 +23,7 @@ export const Navbar: React.FC = () => {
             <button 
               onClick={() => triggerMoneyRain(50)}
               onMouseEnter={() => triggerMoneyRain(10)}
-              className="flex-shrink-0 flex items-center text-green-600 font-bold text-xl group cursor-pointer select-none transition-transform active:scale-90"
+              className="flex-shrink-0 flex items-center text-green-600 font-bold text-xl group cursor-pointer select-none transition-transform duration-200 active:scale-90 hover:scale-105"
               title="Clique para ficar rico!"
             >
               <div className="relative mr-2">

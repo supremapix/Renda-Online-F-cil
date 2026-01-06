@@ -47,6 +47,22 @@
       .animate-fade-in {
         animation: fadeIn 0.3s ease-out forwards;
       }
+
+      /* Floating Animation for Hero Icons */
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      .animate-float-delayed {
+        animation: float 5s ease-in-out infinite 1s;
+      }
+      .animate-float-slow {
+        animation: float 8s ease-in-out infinite 2s;
+      }
     </style>
   <script type="importmap">
 {
