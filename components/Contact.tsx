@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, MessageCircle, Mail } from 'lucide-react';
+import { Phone, MessageCircle, DollarSign } from 'lucide-react';
 import { SectionTitle } from './SectionTitle';
 import { useMoneyRain } from '../MoneyRainContext';
 
@@ -34,12 +34,14 @@ export const Contact: React.FC = () => {
                 href={whatsappLink}
                 target="_blank"
                 rel="noreferrer"
-                onMouseEnter={() => triggerMoneyRain(15)}
-                onClick={() => triggerMoneyRain(60)}
-                className="group flex items-center justify-center space-x-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl shadow-lg shadow-green-200 transition-all transform hover:-translate-y-1 active:scale-95"
+                onMouseEnter={() => triggerMoneyRain(25)}
+                onClick={() => triggerMoneyRain(80)}
+                className="group relative flex items-center justify-center space-x-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl shadow-lg shadow-green-200 transition-all transform hover:-translate-y-1 active:scale-95 overflow-hidden"
               >
-                <MessageCircle className="h-6 w-6 group-hover:animate-bounce" />
-                <span className="font-bold text-lg">Chamar no WhatsApp</span>
+                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <MessageCircle className="h-6 w-6 group-hover:-rotate-12 transition-transform duration-300" />
+                <span className="font-bold text-lg relative z-10">Chamar no WhatsApp</span>
+                <DollarSign className="h-5 w-5 text-yellow-300 absolute right-4 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300 animate-bounce" />
               </a>
               <p className="text-xs text-gray-500 mt-2">
                 Atendimento de Segunda a Sexta, das 8h às 18h.
