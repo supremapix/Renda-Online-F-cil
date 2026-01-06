@@ -14,9 +14,11 @@ export const AiConsultant: React.FC = () => {
     setResponse(null);
 
     try {
-      const apiKey = process.env.API_KEY;
+      // Safe check for process to avoid ReferenceError in browser environments without polyfills
+      const apiKey = (typeof process !== 'undefined' && process.env) ? process.env.API_KEY : undefined;
+
       if (!apiKey) {
-        setResponse("Erro: Chave de API não configurada. Entre em contato com o suporte.");
+        setResponse("Erro: Chave de API não configurada. O sistema de IA está temporariamente indisponível.");
         setLoading(false);
         return;
       }
@@ -40,7 +42,7 @@ export const AiConsultant: React.FC = () => {
       setResponse(result.text || "Não foi possível gerar uma dica agora.");
     } catch (error) {
       console.error("Erro na IA:", error);
-      setResponse("Ocorreu um erro ao consultar o assistente inteligente. Tente novamente.");
+      setResponse("Ocorreu um erro ao consultar o assistente inteligente. Tente novamente mais tarde.");
     } finally {
       setLoading(false);
     }

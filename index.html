@@ -23,6 +23,21 @@
         animation: heartbeat 2s infinite;
         display: inline-block;
       }
+
+      /* Money Rain Animation */
+      @keyframes money-fall {
+        0% { transform: translateY(-10vh) rotate(0deg) scale(0.5); opacity: 0; }
+        10% { opacity: 1; }
+        100% { transform: translateY(110vh) rotate(720deg) scale(1.2); opacity: 0; }
+      }
+      .money-particle {
+        position: fixed;
+        z-index: 9999;
+        pointer-events: none;
+        animation-name: money-fall;
+        animation-timing-function: ease-in;
+        animation-fill-mode: forwards;
+      }
     </style>
   <script type="importmap">
 {
@@ -38,5 +53,6 @@
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
