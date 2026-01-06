@@ -2,8 +2,11 @@ import React from 'react';
 import { SectionTitle } from './SectionTitle';
 import { Share2, ShoppingBag, Globe, TrendingUp } from 'lucide-react';
 import { Typewriter } from './Typewriter';
+import { useMoneyRain } from '../MoneyRainContext';
 
 export const Affiliates: React.FC = () => {
+  const { triggerMoneyRain } = useMoneyRain();
+
   const cards = [
     {
       title: "Marketing de Afiliados",
@@ -64,7 +67,12 @@ export const Affiliates: React.FC = () => {
           <p className="text-gray-600 max-w-2xl mx-auto mb-6">
             Nós fornecemos os links, os criativos e as estratégias. Você só precisa divulgar e ganhar.
           </p>
-          <a href="#contact" className="inline-block bg-green-600 text-white font-bold py-3 px-8 rounded-full hover:bg-green-700 transition-colors">
+          <a 
+            href="#contact" 
+            onMouseEnter={() => triggerMoneyRain(10)}
+            onClick={() => triggerMoneyRain(50)}
+            className="inline-block bg-green-600 text-white font-bold py-3 px-8 rounded-full hover:bg-green-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+          >
             Quero Meus Links de Afiliado
           </a>
         </div>

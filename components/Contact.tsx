@@ -1,8 +1,10 @@
 import React from 'react';
 import { Phone, MessageCircle, Mail } from 'lucide-react';
 import { SectionTitle } from './SectionTitle';
+import { useMoneyRain } from '../MoneyRainContext';
 
 export const Contact: React.FC = () => {
+  const { triggerMoneyRain } = useMoneyRain();
   const phoneNumber = "857658841";
   const whatsappLink = `https://wa.me/258${phoneNumber}?text=Olá Milvan, gostaria de saber mais sobre o Renda Online Fácil.`;
 
@@ -32,7 +34,9 @@ export const Contact: React.FC = () => {
                 href={whatsappLink}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center justify-center space-x-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl shadow-lg shadow-green-200 transition-all transform hover:-translate-y-1"
+                onMouseEnter={() => triggerMoneyRain(15)}
+                onClick={() => triggerMoneyRain(60)}
+                className="group flex items-center justify-center space-x-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl shadow-lg shadow-green-200 transition-all transform hover:-translate-y-1 active:scale-95"
               >
                 <MessageCircle className="h-6 w-6 group-hover:animate-bounce" />
                 <span className="font-bold text-lg">Chamar no WhatsApp</span>

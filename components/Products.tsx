@@ -3,9 +3,11 @@ import { SectionTitle } from './SectionTitle';
 import { BookOpen, Star, Download, Eye, X, CheckCircle2 } from 'lucide-react';
 import { Product } from '../types';
 import { Typewriter } from './Typewriter';
+import { useMoneyRain } from '../MoneyRainContext';
 
 export const Products: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const { triggerMoneyRain } = useMoneyRain();
 
   const products: Product[] = [
     {
@@ -41,6 +43,7 @@ export const Products: React.FC = () => {
   ];
 
   const handleBuy = () => {
+    triggerMoneyRain(60);
     window.location.href = '#contact';
   };
 
@@ -68,7 +71,10 @@ export const Products: React.FC = () => {
                 {/* Overlay with Quick View button on hover (desktop) or always visible (mobile approach via layout) */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <button 
-                    onClick={() => setSelectedProduct(product)}
+                    onClick={() => {
+                      triggerMoneyRain(10);
+                      setSelectedProduct(product);
+                    }}
                     className="bg-white text-gray-900 px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:bg-green-50 transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300"
                   >
                     <Eye className="h-4 w-4" />
@@ -99,7 +105,10 @@ export const Products: React.FC = () => {
                   <span className="text-2xl font-bold text-green-700">{product.price} MT</span>
                   <div className="flex gap-2">
                     <button 
-                      onClick={() => setSelectedProduct(product)}
+                      onClick={() => {
+                        triggerMoneyRain(10);
+                        setSelectedProduct(product);
+                      }}
                       className="p-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors md:hidden"
                       aria-label="Ver detalhes"
                     >
@@ -107,6 +116,7 @@ export const Products: React.FC = () => {
                     </button>
                     <button 
                       onClick={handleBuy}
+                      onMouseEnter={() => triggerMoneyRain(5)}
                       className="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-800 transition-colors flex items-center gap-2"
                     >
                       <Download className="h-4 w-4" />
@@ -185,7 +195,8 @@ export const Products: React.FC = () => {
               <div className="flex gap-4 pt-4 border-t border-gray-100">
                 <button 
                   onClick={handleBuy}
-                  className="flex-1 bg-green-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-green-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-green-200"
+                  onMouseEnter={() => triggerMoneyRain(10)}
+                  className="flex-1 bg-green-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-green-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-green-200 hover:scale-105 transform"
                 >
                   <Download className="h-5 w-5" />
                   Comprar Agora

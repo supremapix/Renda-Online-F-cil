@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Lock, Unlock, CheckCircle, Smartphone } from 'lucide-react';
 import { SectionTitle } from './SectionTitle';
 import { Tutorial } from '../types';
+import { useMoneyRain } from '../MoneyRainContext';
 
 interface PremiumContentProps {
   isPremium: boolean;
@@ -10,6 +11,7 @@ interface PremiumContentProps {
 
 export const PremiumContent: React.FC<PremiumContentProps> = ({ isPremium, onUnlock }) => {
   const [showModal, setShowModal] = useState(false);
+  const { triggerMoneyRain } = useMoneyRain();
 
   const tutorials: Tutorial[] = [
     { id: '1', title: 'Como criar conta no M-Pesa para Negócios', duration: '10:00', thumbnail: 'https://picsum.photos/seed/mpesa/400/250', isPremium: false },
@@ -46,8 +48,12 @@ export const PremiumContent: React.FC<PremiumContentProps> = ({ isPremium, onUnl
                 <div className="flex justify-between items-center mt-4">
                   {t.isPremium && !isPremium ? (
                     <button 
-                      onClick={() => setShowModal(true)}
-                      className="w-full bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-bold py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors"
+                      onClick={() => {
+                        triggerMoneyRain(20);
+                        setShowModal(true);
+                      }}
+                      onMouseEnter={() => triggerMoneyRain(5)}
+                      className="w-full bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-bold py-2 px-4 rounded flex items-center justify-center gap-2 transition-colors hover:scale-105 transform"
                     >
                       <Lock className="h-4 w-4" />
                       Desbloquear (150 MT)
@@ -103,6 +109,7 @@ export const PremiumContent: React.FC<PremiumContentProps> = ({ isPremium, onUnl
               <div className="mt-8">
                 <button
                   onClick={() => {
+                    triggerMoneyRain(100); // Super heavy rain on payment
                     onUnlock();
                     setShowModal(false);
                     alert("Acesso liberado para demonstração! Na versão real, aguardaríamos a confirmação do pagamento.");

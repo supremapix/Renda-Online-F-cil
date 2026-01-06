@@ -1,8 +1,11 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Typewriter } from './Typewriter';
+import { useMoneyRain } from '../MoneyRainContext';
 
 export const Hero: React.FC = () => {
+  const { triggerMoneyRain } = useMoneyRain();
+  
   const heroPhrases = [
     "Lucro Real",
     "Renda Extra",
@@ -30,13 +33,16 @@ export const Hero: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
                 href="#tutorials"
-                className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 shadow-lg transition-transform hover:-translate-y-0.5"
+                onMouseEnter={() => triggerMoneyRain(8)}
+                onClick={() => triggerMoneyRain(40)}
+                className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 shadow-lg transition-transform hover:-translate-y-0.5 active:scale-95"
               >
                 Ver Aulas Premium
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
               <a 
                 href="#contact"
+                onMouseEnter={() => triggerMoneyRain(5)}
                 className="inline-flex justify-center items-center px-6 py-3 border border-green-600 text-base font-medium rounded-md text-green-700 bg-transparent hover:bg-green-50 transition-colors"
               >
                 Fale Comigo
