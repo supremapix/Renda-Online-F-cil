@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { GoogleGenAI } from "@google/genai";
 import { Sparkles, Send, Loader2 } from 'lucide-react';
+import { useMoneyRain } from '../MoneyRainContext';
 
 export const AiConsultant: React.FC = () => {
   const [topic, setTopic] = useState('');
   const [response, setResponse] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const { triggerMoneyRain } = useMoneyRain();
 
   const handleGenerateTip = async () => {
     if (!topic.trim()) return;
 
+    triggerMoneyRain(15); // Little money rain when asking for advice
     setLoading(true);
     setResponse(null);
 
@@ -58,7 +61,7 @@ export const AiConsultant: React.FC = () => {
         
         <h2 className="text-3xl font-bold mb-4">Tem dúvida sobre como começar?</h2>
         <p className="text-gray-300 mb-8">
-          Pergunte à nossa Inteligência Artificial. Digite um tema (ex: "vender sapatos", "afiliados", "investir 1000 MT").
+          Pergunte à nossa Inteligência Artificial. Digite um tema (ex: "como vender no Instagram", "investir em ações", "criar um negócio de importação" ou "marketing de afiliados").
         </p>
 
         <div className="max-w-lg mx-auto bg-white rounded-xl p-2 flex shadow-2xl">
@@ -66,7 +69,7 @@ export const AiConsultant: React.FC = () => {
             type="text" 
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
-            placeholder="Ex: Como importar relógios?"
+            placeholder="Ex: Como vender mais no Instagram?"
             className="flex-1 px-4 py-2 text-gray-900 outline-none rounded-l-lg"
             onKeyDown={(e) => e.key === 'Enter' && handleGenerateTip()}
           />
