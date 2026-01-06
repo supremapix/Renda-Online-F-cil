@@ -23,12 +23,12 @@ export const Navbar: React.FC = () => {
             <button 
               onClick={() => triggerMoneyRain(50)}
               onMouseEnter={() => triggerMoneyRain(10)}
-              className="flex-shrink-0 flex items-center text-green-600 font-bold text-xl group cursor-pointer select-none transition-transform duration-200 active:scale-90 hover:scale-105"
+              className="flex-shrink-0 flex items-center text-green-600 font-bold text-xl group cursor-pointer select-none transition-transform duration-200 active:animate-pulse hover:scale-105"
               title="Clique para ficar rico!"
             >
               <div className="relative mr-2">
                 <div className="absolute inset-0 bg-green-200 rounded-full opacity-0 group-hover:opacity-50 group-hover:animate-ping"></div>
-                <DollarSign className="h-8 w-8 relative z-10 animate-bounce group-hover:text-green-500 transition-colors" />
+                <DollarSign className="h-8 w-8 relative z-10 group-hover:animate-spin group-hover:text-green-500 transition-colors" />
               </div>
               <span className="group-hover:text-green-500 transition-colors">Renda Online Fácil</span>
             </button>
