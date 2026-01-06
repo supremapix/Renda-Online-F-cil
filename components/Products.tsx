@@ -132,8 +132,14 @@ export const Products: React.FC = () => {
 
       {/* Quick View Modal */}
       {selectedProduct && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl relative flex flex-col md:flex-row max-h-[90vh]">
+        <div 
+          className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in cursor-pointer"
+          onClick={() => setSelectedProduct(null)}
+        >
+          <div 
+            className="bg-white rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl relative flex flex-col md:flex-row max-h-[90vh] cursor-default"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button 
               onClick={() => setSelectedProduct(null)}
               className="absolute top-4 right-4 z-10 p-2 bg-white/80 rounded-full hover:bg-white transition-colors text-gray-500 hover:text-red-500"
