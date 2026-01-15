@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, TrendingUp, DollarSign, Bell, Smartphone, ShieldCheck } from 'lucide-react';
+import { ArrowRight, TrendingUp, DollarSign, Sparkles, Zap, Trophy } from 'lucide-react';
 import { Typewriter } from './Typewriter';
 import { useMoneyRain } from '../MoneyRainContext';
 
@@ -50,95 +50,69 @@ export const Hero: React.FC = () => {
             </div>
           </div>
           
-          {/* Animated Graphic Composition */}
+          {/* Animated Icon Composition - Persuasive Money Theme */}
           <div className="relative flex justify-center items-center h-[400px] w-full">
-             {/* Background Glow */}
-             <div className="absolute inset-0 bg-green-400 blur-[100px] opacity-20 rounded-full animate-pulse"></div>
+             {/* 1. Ambient Glow Background */}
+             <div className="absolute inset-0 bg-green-400 blur-[90px] opacity-20 rounded-full animate-pulse"></div>
              
-             {/* Main Card - Smartphone/App Interface */}
-             <div className="relative z-20 bg-white p-6 rounded-[2.5rem] shadow-2xl border-8 border-gray-100 w-64 md:w-72 animate-float">
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-gray-100 rounded-b-xl"></div>
-                
-                {/* Screen Header */}
-                <div className="flex justify-between items-center mb-6 mt-4">
-                  <div className="h-2 w-8 bg-gray-200 rounded-full"></div>
-                  <div className="h-2 w-4 bg-green-400 rounded-full"></div>
-                </div>
+             {/* 2. Rotating Rings (Orbitals) */}
+             <div className="absolute w-[300px] h-[300px] border border-green-200/50 rounded-full animate-[spin_10s_linear_infinite]"></div>
+             <div className="absolute w-[260px] h-[260px] border-2 border-dashed border-emerald-300/40 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
 
-                {/* Balance Card */}
-                <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-4 text-white shadow-lg mb-6 transform transition-transform hover:scale-105 cursor-default">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-xs opacity-80">Saldo Disponível</span>
-                    <DollarSign className="h-4 w-4 opacity-80" />
-                  </div>
-                  <div className="text-2xl font-bold">50.000 MT</div>
-                  <div className="mt-2 text-xs bg-white/20 inline-block px-2 py-0.5 rounded flex items-center w-fit">
-                    <TrendingUp className="h-3 w-3 mr-1" /> +12% hoje
-                  </div>
-                </div>
+             {/* 3. Main Central Emblem */}
+             <div 
+               className="relative z-20 group cursor-pointer"
+               onClick={() => triggerMoneyRain(100)}
+               onMouseEnter={() => triggerMoneyRain(10)}
+             >
+                {/* The Container */}
+                <div className="bg-gradient-to-br from-green-500 to-emerald-700 w-40 h-40 rounded-[2.5rem] flex items-center justify-center shadow-2xl shadow-green-600/50 animate-float transform transition-transform group-hover:scale-110 border-t border-l border-white/20">
+                  
+                  {/* Inner Glow Effect */}
+                  <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-[2.5rem] transition-opacity duration-300"></div>
 
-                {/* Notification List */}
-                <div className="space-y-3">
-                  <div className="flex items-center p-3 bg-gray-50 rounded-xl border border-gray-100 shadow-sm animate-pulse">
-                    <div className="bg-green-100 p-2 rounded-full mr-3">
-                      <DollarSign className="h-4 w-4 text-green-600" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-gray-800">Venda Realizada</div>
-                      <div className="text-[10px] text-gray-500">Há 2 minutos</div>
-                    </div>
-                    <div className="ml-auto text-xs font-bold text-green-600">+850 MT</div>
+                  {/* Central Icon */}
+                  <div className="bg-white p-4 rounded-full shadow-inner relative overflow-hidden">
+                    <DollarSign className="h-16 w-16 text-green-600 relative z-10" />
+                    {/* Shiny reflection inside icon */}
+                    <div className="absolute top-0 -left-10 w-8 h-full bg-white opacity-50 skew-x-12 animate-[spin_3s_infinite_linear] blur-md"></div>
                   </div>
 
-                  <div className="flex items-center p-3 bg-gray-50 rounded-xl border border-gray-100 shadow-sm opacity-70">
-                    <div className="bg-blue-100 p-2 rounded-full mr-3">
-                      <Smartphone className="h-4 w-4 text-blue-600" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-gray-800">Novo Afiliado</div>
-                      <div className="text-[10px] text-gray-500">Há 15 minutos</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom Button */}
-                <div className="mt-6 bg-gray-900 text-white py-3 rounded-xl text-center text-sm font-bold shadow-lg">
-                  Sacar Agora
+                  {/* Sparkles attached to main icon */}
+                  <Sparkles className="absolute -top-4 -right-4 h-10 w-10 text-yellow-300 animate-bounce drop-shadow-md" />
                 </div>
              </div>
 
-             {/* Floating Elements (Badges/Icons) */}
+             {/* 4. Floating Satellite Elements (Orbiting Objects) */}
              
-             {/* Top Right Notification */}
-             <div className="absolute top-0 right-0 md:right-10 bg-white p-3 rounded-2xl shadow-xl border border-green-50 animate-float-delayed z-30">
-               <div className="flex items-center gap-2">
-                 <div className="bg-red-100 p-1.5 rounded-full relative">
-                   <Bell className="h-5 w-5 text-red-500" />
-                   <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full border-2 border-white"></span>
-                 </div>
-                 <div>
-                   <p className="text-xs font-bold text-gray-800">Pagamento</p>
-                   <p className="text-[10px] text-gray-500">M-Pesa Recebido</p>
-                 </div>
-               </div>
-             </div>
-
-             {/* Bottom Left Trust Badge */}
-             <div className="absolute bottom-10 left-0 md:left-10 bg-white p-3 rounded-2xl shadow-xl border border-blue-50 animate-float-slow z-30">
+             {/* Growth Chart */}
+             <div className="absolute top-16 right-12 lg:right-20 bg-white p-3 rounded-2xl shadow-xl animate-float-delayed z-10">
                 <div className="flex items-center gap-2">
-                  <div className="bg-blue-100 p-1.5 rounded-full">
-                    <ShieldCheck className="h-5 w-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-gray-800">100% Seguro</p>
-                    <p className="text-[10px] text-gray-500">Método Comprovado</p>
-                  </div>
+                   <div className="bg-blue-100 p-1.5 rounded-lg">
+                      <TrendingUp className="h-5 w-5 text-blue-600" />
+                   </div>
+                   <span className="text-xs font-bold text-gray-700">Lucro</span>
                 </div>
              </div>
 
-             {/* Decorative Background Elements */}
-             <div className="absolute top-10 left-10 h-16 w-16 bg-yellow-300 rounded-full blur-xl opacity-30 animate-pulse"></div>
-             <div className="absolute bottom-20 right-20 h-24 w-24 bg-green-500 rounded-full blur-2xl opacity-20"></div>
+             {/* Instant Action */}
+             <div className="absolute bottom-20 left-12 lg:left-20 bg-white p-3 rounded-2xl shadow-xl animate-float-slow z-10">
+                <div className="flex items-center gap-2">
+                   <div className="bg-yellow-100 p-1.5 rounded-lg">
+                      <Zap className="h-5 w-5 text-yellow-600" />
+                   </div>
+                   <span className="text-xs font-bold text-gray-700">Rápido</span>
+                </div>
+             </div>
+
+             {/* Success Trophy */}
+             <div className="absolute -bottom-2 right-1/2 translate-x-16 bg-gradient-to-r from-orange-400 to-pink-500 p-3 rounded-full shadow-lg animate-bounce z-30 border-2 border-white">
+                <Trophy className="h-6 w-6 text-white" />
+             </div>
+
+             {/* Background Particles */}
+             <div className="absolute top-10 left-10 h-2 w-2 bg-green-500 rounded-full animate-ping"></div>
+             <div className="absolute bottom-10 right-10 h-3 w-3 bg-yellow-400 rounded-full animate-pulse"></div>
           </div>
         </div>
       </div>

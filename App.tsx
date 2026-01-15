@@ -7,6 +7,7 @@ import { PremiumContent } from './components/PremiumContent';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { AiConsultant } from './components/AiConsultant';
+import { Watermark } from './components/Watermark';
 import { MoneyRainProvider } from './MoneyRainContext';
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
 
   return (
     <MoneyRainProvider>
-      <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
+      <div className="min-h-screen bg-gray-50 font-sans text-gray-900 relative">
+        <Watermark />
         <Navbar />
         
         <main>
